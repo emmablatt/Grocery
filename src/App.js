@@ -4,13 +4,12 @@ import { addItem } from './actions'
 import { connect } from 'react-redux'
 import ItemsContainer from './ItemsContainer'
 import AddItem from './AddItem'
-import { StackNavigator } from 'react-navigation'
+import { StackNavigator, TabNavigator } from 'react-navigation'
 
-class Home extends Component {
+class Grocery extends Component {
   static navigationOptions = {
     title: 'Groceries',
   }
-
   render() {
     return (
       <View>
@@ -21,12 +20,35 @@ class Home extends Component {
   }
 }
 
-const AppNav = StackNavigator({
-  Home: { screen: Home },
+class Pantry extends Component {
+  static navigationOptions = {
+    title: 'Pantry',
+  }
+  render() {
+    return (
+      <View>
+        <Text>Pantry af</Text>
+      </View>
+    )
+  }
+}
+
+const TabNavConfig = TabNavigator({
+  Grocery: { screen: Grocery },
+  Pantry: { screen: Pantry },
+})
+
+const NavConfig = StackNavigator({
+  Home: {
+    screen: TabNavConfig,
+    navigationOptions: {
+      title: 'Grocery',
+    },
+  },
 })
 
 export default class App extends Component {
   render() {
-    return <AppNav />
+    return <NavConfig />
   }
 }

@@ -14,7 +14,7 @@ class AddItem extends Component {
     return (
       <View>
         <TextInput
-          style={{ borderWidth: 1, borderColor: 'black' }}
+          style={{ borderWidth: 1, borderColor: 'black', margin: 10 }}
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
           onSubmitEditing={() => {
