@@ -1,5 +1,5 @@
-import { ADD_ITEM } from './actions'
-import { TOGGLE_ITEM } from './actions'
+import { ADD_ITEM, TOGGLE_ITEM } from './actions'
+import { combineReducers } from 'redux'
 
 const initialState = {
   items: [
@@ -9,7 +9,7 @@ const initialState = {
   ],
 }
 
-const items = (state = initialState, action) => {
+export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
       return Object.assign({}, state, {
@@ -37,5 +37,3 @@ const items = (state = initialState, action) => {
       return state
   }
 }
-
-export default items

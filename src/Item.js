@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 const Item = props => {
-  console.log(props)
   return (
     <View>
       <Text
