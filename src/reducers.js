@@ -1,7 +1,13 @@
-import { ADD_ITEM, TOGGLE_ITEM } from './actions'
+import {
+  ADD_ITEM,
+  TOGGLE_ITEM,
+  FETCHING_DATA,
+  FETCHING_SUCCESS,
+  FETCHING_ERROR,
+} from './actions'
 import { combineReducers } from 'redux'
 
-const initialState = {
+const initialItemsState = {
   items: [
     { text: 'Item 1', completed: false, id: 0 },
     { text: 'Item 2', completed: false, id: 1 },
@@ -9,7 +15,7 @@ const initialState = {
   ],
 }
 
-export const itemReducer = (state = initialState, action) => {
+export const itemReducer = (state = initialItemsState, action) => {
   switch (action.type) {
     case ADD_ITEM:
       return Object.assign({}, state, {
@@ -32,6 +38,36 @@ export const itemReducer = (state = initialState, action) => {
           }
           return item
         }),
+      })
+    default:
+      return state
+  }
+}
+
+const initialDataState = {
+  data: [],
+  dataFetched: false,
+  isFetching: false,
+  error: false,
+}
+
+export const dataReducer = (state = initialDataState, action) => {
+  switch (action.type) {
+    case FETCHING_DATA:
+      return Object.assign({}, state, {
+        data: [],
+        isFetching: true,
+      })
+    case FETCHING_SUCCESS:
+      return Object.assign({}, state, {
+        data: action.data,
+        isFetching: false,
+        dataFetched: true,
+      })
+    case FETCHING_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: true,
       })
     default:
       return state

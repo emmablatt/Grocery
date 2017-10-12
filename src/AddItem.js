@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, TextInput, Button } from 'react-native'
 import { connect } from 'react-redux'
-import { addItem } from './actions'
+import { addItem, fetchData } from './actions'
 import PropTypes from 'prop-types'
 
 class AddItem extends Component {
@@ -11,6 +11,7 @@ class AddItem extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <View>
         <TextInput
@@ -18,7 +19,7 @@ class AddItem extends Component {
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
           onSubmitEditing={() => {
-            this.props.dispatch(addItem(this.state.text))
+            this.props.addItem(this.state.text)
             this.setState({ text: '' })
           }}
         />
@@ -28,7 +29,7 @@ class AddItem extends Component {
             if (this.state.text === '') {
               return
             }
-            this.props.dispatch(addItem(this.state.text))
+            this.props.addItem(this.state.text)
             this.setState({ text: '' })
           }}
         />
@@ -37,10 +38,19 @@ class AddItem extends Component {
   }
 }
 
-const mapDispatchToProps = () => {
+function mapStateToProps(state) {
   return {
-    addItem: addItem,
+    data: state.dataReducer.data,
+    isFetching: state.dataReducer.isFetching,
+    error: state.dataReducer.error,
+    dataFetched: state.dataReducer.dataFetched,
   }
 }
 
-export default connect(mapDispatchToProps)(AddItem)
+function mapDispatchToProps(dispatch) {
+  return {
+    addItem: text => dispatch(addItem(text)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem)
