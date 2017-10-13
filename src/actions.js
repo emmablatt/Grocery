@@ -34,6 +34,6 @@ export function fetchData(query) {
     fetchingData(query)
       .then(response => response.json())
       .then(data => dispatch(getDataSuccess(data)))
-      .catch(error => console.log('error:', error))
+      .catch(() => dispatch(getDataError()))
   }
 }
