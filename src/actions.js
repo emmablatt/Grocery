@@ -4,7 +4,7 @@ export const TOGGLE_ITEM = 'TOGGLE_ITEM'
 export const FETCHING_DATA = 'FETCHING_DATA'
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS'
 export const FETCHING_ERROR = 'FETCHING_ERROR'
-import getPeople from './api'
+import fetchingData from './api'
 
 // action creators
 nextId = 3
@@ -16,8 +16,8 @@ export function toggleItem(index) {
   return { type: TOGGLE_ITEM, index }
 }
 
-export function getData() {
-  return { type: FETCHING_DATA }
+export function getData(query) {
+  return { type: FETCHING_DATA, query }
 }
 
 export function getDataSuccess(data) {
@@ -28,13 +28,11 @@ export function getDataError() {
   return { type: FETCHING_ERROR }
 }
 
-export function fetchData() {
-  return dispatch => {
-    dispatch(getData())
-    getPeople()
-      .then(data => {
-        dispatch(getDataSuccess(data))
-      })
-      .catch(err => console.log('err:', err))
+export function fetchData(query) {
+  return function(dispatch) {
+    dispatch(getData(query))
+    fetchingData(query)
+      .then(data => dispatch(getDataSuccess(data)))
+      .catch(error => console.log('error:', error))
   }
 }

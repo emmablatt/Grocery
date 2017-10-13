@@ -1,21 +1,9 @@
-// var walmart = require('walmart')('k9scr4rj3c9wxzap794qmr3r')
-//
-// const fetchResults = () => {
-//   walmart.stores.search('broccoli').then(function(data) {
-//     console.log(data)
-//   })
-// }
+const API_KEY = 'k9scr4rj3c9wxzap794qmr3r'
 
-const people = [
-  { name: 'Nader', age: 36 },
-  { name: 'Amanda', age: 24 },
-  { name: 'Jason', age: 44 },
-]
-
-export default () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      return resolve(people)
-    }, 3000)
-  })
+const fetchingData = query => {
+  fetch(
+    `http://api.walmartlabs.com/v1/search?apiKey=${API_KEY}&query=${query}`,
+  ).then(response => response.json())
 }
+
+export default fetchingData

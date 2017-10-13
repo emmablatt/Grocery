@@ -28,18 +28,17 @@ class AddItem extends Component {
             // if (this.state.text === '') {
             //   return
             // }
-            this.props.fetchData()
+            this.props.fetchData(this.state.text)
             this.setState({ text: '' })
           }}
         />
         <View style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Loading</Text>}
           {this.props.data.length
-            ? this.props.data.map((person, i) => {
+            ? this.props.data.items.map((item, i) => {
                 return (
                   <View key={i}>
-                    <Text>Name: {person.name}</Text>
-                    <Text>Age: {person.age}</Text>
+                    <Text>Item id: {item.id}</Text>
                   </View>
                 )
               })
@@ -62,7 +61,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addItem: text => dispatch(addItem(text)),
-    fetchData: () => dispatch(fetchData()),
+    fetchData: query => dispatch(fetchData(query)),
   }
 }
 

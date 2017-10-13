@@ -7,15 +7,16 @@ import {
 } from './actions'
 import { combineReducers } from 'redux'
 
-const initialItemsState = {
-  items: [
-    { text: 'Item 1', completed: false, id: 0 },
-    { text: 'Item 2', completed: false, id: 1 },
-    { text: 'Item 3', completed: false, id: 2 },
-  ],
-}
-
-export const itemReducer = (state = initialItemsState, action) => {
+export const itemReducer = (
+  state = {
+    items: [
+      { text: 'Item 1', completed: false, id: 0 },
+      { text: 'Item 2', completed: false, id: 1 },
+      { text: 'Item 3', completed: false, id: 2 },
+    ],
+  },
+  action,
+) => {
   switch (action.type) {
     case ADD_ITEM:
       return Object.assign({}, state, {
@@ -44,14 +45,15 @@ export const itemReducer = (state = initialItemsState, action) => {
   }
 }
 
-const initialDataState = {
-  data: [],
-  dataFetched: false,
-  isFetching: false,
-  error: false,
-}
-
-export const dataReducer = (state = initialDataState, action) => {
+export const dataReducer = (
+  state = {
+    data: [],
+    dataFetched: false,
+    isFetching: false,
+    error: false,
+  },
+  action,
+) => {
   switch (action.type) {
     case FETCHING_DATA:
       return Object.assign({}, state, {
