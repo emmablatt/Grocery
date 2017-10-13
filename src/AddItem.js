@@ -8,6 +8,7 @@ class AddItem extends Component {
   constructor(props) {
     super(props)
     this.state = { text: '' }
+    console.log(this.props)
   }
 
   render() {
@@ -25,24 +26,17 @@ class AddItem extends Component {
         <Button
           title="Fetch some data"
           onPress={() => {
-            // if (this.state.text === '') {
-            //   return
-            // }
+            if (this.state.text === '') {
+              return
+            }
+            console.log('addItem props:', this.props)
             this.props.fetchData(this.state.text)
             this.setState({ text: '' })
           }}
         />
         <View style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Loading</Text>}
-          {this.props.data.length
-            ? this.props.data.items.map((item, i) => {
-                return (
-                  <View key={i}>
-                    <Text>Item id: {item.id}</Text>
-                  </View>
-                )
-              })
-            : null}
+          {this.props.data.length ? console.log(this.props.data) : null}
         </View>
       </View>
     )
