@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
+import 'whatwg-fetch'
 
 const loggerMiddleware = createLogger()
 
