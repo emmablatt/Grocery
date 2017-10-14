@@ -51,25 +51,30 @@ export const dataReducer = (
     dataFetched: false,
     isFetching: false,
     error: false,
+    items: [],
   },
   action,
 ) => {
   switch (action.type) {
     case FETCHING_DATA:
       return Object.assign({}, state, {
-        data: [],
         isFetching: true,
+        dataFetched: false,
       })
     case FETCHING_SUCCESS:
       return Object.assign({}, state, {
         data: action.data,
         isFetching: false,
         dataFetched: true,
+        items: state.data.items
+          ? state.data.items.concat(action.data.items)
+          : action.data.items,
       })
     case FETCHING_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
         error: true,
+        dataFetched: false,
       })
     default:
       return state
