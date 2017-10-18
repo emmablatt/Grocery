@@ -46,7 +46,7 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>api.walmartlabs.com</key>
+			<key>api.nap.usda.gov</key>
 			<string>1</string>
 			<key>localhost</key>
 			<dict>
