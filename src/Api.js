@@ -1,10 +1,14 @@
-const API_KEY = 'k9scr4rj3c9wxzap794qmr3r'
-const ID = 976759
+const API_KEY = 'mzWY9K16xqEHNxom233MhGiTSkVRBQbdFGDR2Jp7'
 
 const fetchingData = query => {
   return fetch(
-    `https://api.walmartlabs.com/v1/search?apiKey=${API_KEY}&query=${query}&categoryId=${ID}`,
+    `https://api.nal.usda.gov/ndb/search/?format=json&q=${query}&ds=Standard Reference&api_key=${API_KEY}`,
   )
 }
 
 export default fetchingData
+
+// api key (usda): mzWY9K16xqEHNxom233MhGiTSkVRBQbdFGDR2Jp7
+// parameters: q (query), ds (data source – choose standard reference),
+// api ref: https://ndb.nal.usda.gov/ndb/doc/apilist/API-SEARCH.md
+// food search: https://ndb.nal.usda.gov/ndb/search/list

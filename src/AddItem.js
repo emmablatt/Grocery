@@ -36,15 +36,7 @@ class AddItem extends Component {
         />
         <ScrollView style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Fetching...</Text>}
-          {this.props.dataFetched
-            ? this.props.items.map((item, i) => {
-                return (
-                  <View key={i}>
-                    <Text>{item.name}</Text>
-                  </View>
-                )
-              })
-            : null}
+          {this.props.dataFetched ? console.log('data fetched!') : null}
         </ScrollView>
       </View>
     )
