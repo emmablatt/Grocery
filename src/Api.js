@@ -2,7 +2,7 @@ const API_KEY = 'mzWY9K16xqEHNxom233MhGiTSkVRBQbdFGDR2Jp7'
 
 const fetchingData = query => {
   return fetch(
-    `https://api.nal.usda.gov/ndb/search/?format=json&q=${query}&ds=Standard Reference&api_key=${API_KEY}`,
+    `https://api.nal.usda.gov/ndb/search/?format=json&q=${query}&max=25&ds=Standard Reference&api_key=${API_KEY}`,
   )
 }
 
