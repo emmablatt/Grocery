@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addItem, fetchData } from './actions'
 import PropTypes from 'prop-types'
 import style from './style'
+import Item from './Item'
 
 class AddItem extends Component {
   constructor(props) {
@@ -36,7 +37,17 @@ class AddItem extends Component {
         />
         <ScrollView style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Fetching...</Text>}
-          {this.props.dataFetched ? console.log('data fetched!') : null}
+          {this.props.dataFetched
+            ? this.props.data.list.item.map(item => {
+                return (
+                  <Item
+                    key={item.ndbno}
+                    text={item.name}
+                    category={item.group}
+                  />
+                )
+              })
+            : null}
         </ScrollView>
       </View>
     )

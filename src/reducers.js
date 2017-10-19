@@ -9,11 +9,7 @@ import { combineReducers } from 'redux'
 
 export const itemReducer = (
   state = {
-    items: [
-      { text: 'Pasta', completed: false, id: 0 },
-      { text: 'Apple', completed: false, id: 1 },
-      { text: 'Bread', completed: false, id: 2 },
-    ],
+    items: [],
   },
   action,
 ) => {
@@ -51,7 +47,6 @@ export const dataReducer = (
     dataFetched: false,
     isFetching: false,
     error: false,
-    items: [],
   },
   action,
 ) => {
@@ -66,9 +61,6 @@ export const dataReducer = (
         data: action.data,
         isFetching: false,
         dataFetched: true,
-        items: state.data.list
-          ? state.data.list.concat(action.data.list)
-          : action.data.list,
       })
     case FETCHING_ERROR:
       return Object.assign({}, state, {

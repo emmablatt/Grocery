@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import style from './style'
 
 const Item = props => {
   return (
-    <View>
+    <View key={props.id} style={style.item}>
       <Text
-        key={props.id}
         onPress={props.onPress}
         style={{
           textDecorationLine: props.completed ? 'line-through' : 'none',
@@ -15,6 +15,7 @@ const Item = props => {
       >
         {props.text}
       </Text>
+      <Text style={{ color: 'grey' }}>{props.category}</Text>
     </View>
   )
 }
