@@ -3,10 +3,10 @@ import React from 'react'
 
 const style = StyleSheet.create({
   item: {
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: 'black',
-    margin: 10,
     padding: 10,
+    marginTop: 10,
     borderRadius: 4,
   },
 })

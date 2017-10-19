@@ -7,7 +7,7 @@ export const FETCHING_ERROR = 'FETCHING_ERROR'
 import fetchingData from './api'
 
 // action creators
-nextId = 3
+nextId = 0
 export function addItem(text) {
   return { type: ADD_ITEM, text, completed: false, id: nextId++ }
 }
