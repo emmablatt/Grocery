@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ItemsContainer from './ItemsContainer'
 import AddItem from './AddItem'
 import { StackNavigator, TabNavigator } from 'react-navigation'
+import Search from './Search'
 
 class Grocery extends Component {
   static navigationOptions = {
@@ -38,12 +39,8 @@ const TabNavConfig = TabNavigator({
 })
 
 const NavConfig = StackNavigator({
-  Home: {
-    screen: TabNavConfig,
-    navigationOptions: {
-      title: 'Grocery',
-    },
-  },
+  Home: { screen: TabNavConfig },
+  Search: { screen: Search },
 })
 
 export const App = props => {

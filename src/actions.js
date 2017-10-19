@@ -4,7 +4,7 @@ export const TOGGLE_ITEM = 'TOGGLE_ITEM'
 export const FETCHING_DATA = 'FETCHING_DATA'
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS'
 export const FETCHING_ERROR = 'FETCHING_ERROR'
-import fetchingData from './api'
+import fetchingData from './Api'
 
 // action creators
 nextId = 0

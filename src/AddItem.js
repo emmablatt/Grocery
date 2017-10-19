@@ -5,12 +5,13 @@ import { addItem, fetchData } from './actions'
 import PropTypes from 'prop-types'
 import style from './style'
 import Item from './Item'
+import Search from './Search'
 
 class AddItem extends Component {
   constructor(props) {
     super(props)
     this.state = { text: '' }
-    console.log(this.props)
+    console.log('AddItem props', this.props)
   }
 
   render() {
@@ -35,6 +36,7 @@ class AddItem extends Component {
             this.setState({ text: '' })
           }}
         />
+        <Button title="Navigate" onPress={console.log('hi')} />
         <ScrollView style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Fetching...</Text>}
           {this.props.dataFetched
