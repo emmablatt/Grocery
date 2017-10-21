@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, TextInput } from 'react-native'
-import { StackNavigator } from 'react-navigation'
+import { View, Text } from 'react-native'
 
 export default class Search extends Component {
   render() {

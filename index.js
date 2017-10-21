@@ -1,19 +1,21 @@
 import { AppRegistry } from 'react-native'
 import App from './src/App'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { itemReducer, dataReducer } from './src/reducers'
+import { itemReducer, dataReducer, navReducer } from './src/reducers'
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import 'whatwg-fetch'
-
-const loggerMiddleware = createLogger()
+import AppWithNavigationState from './src/AppNavigator'
 
 const rootReducer = combineReducers({
   itemReducer,
   dataReducer,
+  navReducer,
 })
+
+const loggerMiddleware = createLogger()
 
 let store = createStore(
   rootReducer,
@@ -24,9 +26,10 @@ class grocery extends Component {
   render() {
     return (
       <Provider store={store}>
-        <App store={store} />
+        <AppWithNavigationState />
       </Provider>
     )
   }
 }
+
 AppRegistry.registerComponent('grocery', () => grocery)

@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import { connect } from 'react-redux'
 import ItemsContainer from './ItemsContainer'
 import AddItem from './AddItem'
-import { StackNavigator, TabNavigator } from 'react-navigation'
 import Search from './Search'
 
-class Grocery extends Component {
+export class Grocery extends Component {
   static navigationOptions = {
     title: 'Groceries',
   }
@@ -20,7 +18,7 @@ class Grocery extends Component {
   }
 }
 
-class Pantry extends Component {
+export class Pantry extends Component {
   static navigationOptions = {
     title: 'Pantry',
   }
@@ -32,19 +30,3 @@ class Pantry extends Component {
     )
   }
 }
-
-const TabNavConfig = TabNavigator({
-  Grocery: { screen: Grocery },
-  Pantry: { screen: Pantry },
-})
-
-const NavConfig = StackNavigator({
-  Home: { screen: TabNavConfig },
-  Search: { screen: Search },
-})
-
-export const App = props => {
-  return <NavConfig />
-}
-
-export default App

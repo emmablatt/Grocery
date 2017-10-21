@@ -6,6 +6,16 @@ import {
   FETCHING_ERROR,
 } from './actions'
 import { combineReducers } from 'redux'
+import { AppNavigator } from './AppNavigator'
+import { NavigationActions } from 'react-navigation'
+
+const initialNavState = AppNavigator.router.getStateForAction(
+  AppNavigator.router.getActionForPathAndParams('Grocery'),
+)
+
+export const navReducer = (state = initialNavState, action) => {
+  return state
+}
 
 export const itemReducer = (
   state = {
