@@ -19,19 +19,21 @@ export const AppNavigator = StackNavigator({
   Search: { screen: Search },
 })
 
-const AppWithNavigationState = ({ dispatch, nav }) => {
+const AppWithNavigationState = ({ dispatch, navReducer }) => {
   return (
-    <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+    <AppNavigator
+      navigation={addNavigationHelpers({ dispatch, state: navReducer })}
+    />
   )
 }
 
 AppWithNavigationState.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
+  navReducer: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
-  nav: state.navReducer,
+  navReducer: state.navReducer,
 })
 
 export default connect(mapStateToProps)(AppWithNavigationState)

@@ -9,14 +9,6 @@ import { combineReducers } from 'redux'
 import { AppNavigator } from './AppNavigator'
 import { NavigationActions } from 'react-navigation'
 
-const initialNavState = AppNavigator.router.getStateForAction(
-  AppNavigator.router.getActionForPathAndParams('Grocery'),
-)
-
-export const navReducer = (state = initialNavState, action) => {
-  return state
-}
-
 export const itemReducer = (
   state = {
     items: [],
@@ -81,4 +73,23 @@ export const dataReducer = (
     default:
       return state
   }
+}
+
+const initialNavState = AppNavigator.router.getStateForAction(
+  AppNavigator.router.getActionForPathAndParams('Grocery'),
+)
+
+export const navReducer = (state = initialNavState, action) => {
+  let nextState
+  switch (action.type) {
+    case 'Search':
+      nextState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'Search' }),
+      )
+      break
+    default:
+      nextState = AppNavigator.router.getStateForAction(action, state)
+      break
+  }
+  return nextState || state
 }

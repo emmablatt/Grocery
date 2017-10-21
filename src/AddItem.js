@@ -36,7 +36,10 @@ class AddItem extends Component {
             this.setState({ text: '' })
           }}
         />
-        <Button title="Navigate" onPress={console.log('hi')} />
+        <Button
+          title="Navigate"
+          onPress={() => this.props.navigation.dispatch({ type: 'Search ' })}
+        />
         <ScrollView style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Fetching...</Text>}
           {this.props.dataFetched
