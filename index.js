@@ -1,5 +1,4 @@
 import { AppRegistry } from 'react-native'
-import App from './src/App'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { itemReducer, dataReducer, navReducer } from './src/reducers'
 import React, { Component } from 'react'
@@ -23,14 +22,14 @@ let store = createStore(
   composeWithDevTools(applyMiddleware(thunkMiddleware, loggerMiddleware)),
 )
 
-class grocery extends Component {
+class GroceryApp extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigationState />
+        <AppWithNavigationState store={store} />
       </Provider>
     )
   }
 }
 
-AppRegistry.registerComponent('grocery', () => grocery)
+AppRegistry.registerComponent('GroceryApp', () => GroceryApp)

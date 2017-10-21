@@ -98,7 +98,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.grocery"
+        applicationId "com.groceryapp"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
