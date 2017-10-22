@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import style from './style'
 import Item from './Item'
 import Search from './Search'
+import { navigate } from './actions'
 
 class AddItem extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class AddItem extends Component {
         />
         <Button
           title="Navigate"
-          onPress={() => this.props.navigation.navigate('Search')}
+          onPress={() => this.props.navigate('Search')}
         />
         <ScrollView style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Fetching...</Text>}
@@ -66,7 +67,6 @@ function mapStateToProps(state) {
     error: state.dataReducer.error,
     dataFetched: state.dataReducer.dataFetched,
     items: state.dataReducer.items,
-    navigation: state.navReducer,
   }
 }
 
@@ -74,6 +74,7 @@ function mapDispatchToProps(dispatch) {
   return {
     addItem: text => dispatch(addItem(text)),
     fetchData: query => dispatch(fetchData(query)),
+    navigate: routeName => dispatch(navigate(routeName)),
   }
 }
 
