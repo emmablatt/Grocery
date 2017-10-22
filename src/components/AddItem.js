@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, TextInput, Button, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { addItem, fetchData, navigate } from '../actions'
+import { addManualItem, fetchData, navigate } from '../actions'
 import PropTypes from 'prop-types'
 import style from '../style'
 import Item from './Item'
@@ -23,7 +23,7 @@ class AddItem extends Component {
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
           onSubmitEditing={() => {
-            this.props.addItem(this.state.text)
+            this.props.addManualItem(this.state.text)
             this.setState({ text: '' })
           }}
         />
@@ -54,6 +54,10 @@ class AddItem extends Component {
       </View>
     )
   }
+
+  _onItemPress = () => {
+    return
+  }
 }
 
 function mapStateToProps(state) {
@@ -68,7 +72,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addItem: text => dispatch(addItem(text)),
+    addManualItem: text => dispatch(addManualItem(text)),
     fetchData: query => dispatch(fetchData(query)),
   }
 }

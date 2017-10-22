@@ -1,5 +1,6 @@
 import {
-  ADD_ITEM,
+  ADD_MANUAL_ITEM,
+  ADD_ITEM_FROM_SEARCH,
   TOGGLE_ITEM,
   FETCHING_DATA,
   FETCHING_SUCCESS,
@@ -16,7 +17,7 @@ export const itemReducer = (
   action,
 ) => {
   switch (action.type) {
-    case ADD_ITEM:
+    case ADD_MANUAL_ITEM:
       return Object.assign({}, state, {
         items: [
           ...state.items,
