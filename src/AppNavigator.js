@@ -6,9 +6,9 @@ import {
   StackNavigator,
   TabNavigator,
 } from 'react-navigation'
-import Grocery from './App'
-import Pantry from './Pantry'
-import Search from './Search'
+import Grocery from './components/Grocery'
+import Pantry from './components/Pantry'
+import Search from './components/Search'
 
 const TabNavConfig = TabNavigator({
   Grocery: { screen: Grocery },

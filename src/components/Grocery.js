@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native'
-import ItemsContainer from './ItemsContainer'
+import Items from './Items'
 import AddItem from './AddItem'
 import Search from './Search'
 import { connect } from 'react-redux'
-import { navigate } from './actions'
+import { navigate } from '../actions'
 
 export class Grocery extends Component {
   static navigationOptions = {
@@ -17,7 +17,7 @@ export class Grocery extends Component {
           title="Add item"
           onPress={() => this.props.navigate('Search')}
         />
-        <ItemsContainer />
+        <Items />
       </View>
     )
   }

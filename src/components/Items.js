@@ -3,9 +3,9 @@ import { Text, View, Button } from 'react-native'
 import { connect } from 'react-redux'
 import Item from './Item'
 import PropTypes from 'prop-types'
-import { toggleItem } from './actions'
+import { toggleItem } from '../actions'
 
-const ItemsContainer = props => {
+const Items = props => {
   return (
     <View>
       {props.items.map(item => (
@@ -34,7 +34,7 @@ const mapStateToProps = state => {
   }
 }
 
-ItemsContainer.propTypes = {
+Items.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -43,4 +43,4 @@ ItemsContainer.propTypes = {
   ).isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(Items)

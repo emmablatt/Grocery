@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import AddItem from './AddItem'
-import { navigate } from './actions'
-import ItemsContainer from './ItemsContainer'
+import { navigate } from '../actions'
+import Items from './Items'
 
 export default class Search extends Component {
   static navigationOptions = {
@@ -12,7 +12,7 @@ export default class Search extends Component {
     return (
       <View>
         <AddItem />
-        <ItemsContainer />
+        <Items />
       </View>
     )
   }

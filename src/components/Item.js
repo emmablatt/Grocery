@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import style from './style'
+import style from '../style'
 
 const Item = props => {
   return (
