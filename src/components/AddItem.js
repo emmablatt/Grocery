@@ -64,24 +64,12 @@ class AddItem extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    data: state.dataReducer.data,
-    isFetching: state.dataReducer.isFetching,
-    error: state.dataReducer.error,
-    dataFetched: state.dataReducer.dataFetched,
-    items: state.dataReducer.items,
-  }
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     addManualItem: text => dispatch(addManualItem(text)),
-    fetchData: query => dispatch(fetchData(query)),
-    addItemFromSearch: item => dispatch(addItemFromSearch(item)),
     goBack: () => dispatch(goBack()),
     navigate: (routeName, params) => dispatch(navigate(routeName, params)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddItem)
+export default connect(null, mapDispatchToProps)(AddItem)

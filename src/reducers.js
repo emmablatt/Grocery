@@ -36,6 +36,7 @@ export const itemReducer = (
             text: action.name,
             group: action.group,
             id: action.id,
+            completed: false,
           },
         ],
       })

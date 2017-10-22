@@ -5,16 +5,10 @@ import PropTypes from 'prop-types'
 import style from '../style'
 
 const Item = props => {
+  console.log('Item text:', props.text)
   return (
     <View key={props.id} style={style.item}>
-      <Text
-        onPress={props.onPress}
-        style={{
-          textDecorationLine: props.completed ? 'line-through' : 'none',
-        }}
-      >
-        {props.text}
-      </Text>
+      <Text onPress={props.onPress}>{props.text}</Text>
       <Text style={{ color: 'grey' }}>{props.category}</Text>
     </View>
   )
