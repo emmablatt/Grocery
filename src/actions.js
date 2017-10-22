@@ -68,3 +68,7 @@ export function fetchData(query) {
 export function navigate(routeName) {
   return NavigationActions.navigate({ routeName })
 }
+
+export function goBack() {
+  return NavigationActions.back()
+}

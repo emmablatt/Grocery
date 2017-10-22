@@ -28,6 +28,17 @@ export const itemReducer = (
           },
         ],
       })
+    case ADD_ITEM_FROM_SEARCH:
+      return Object.assign({}, state, {
+        items: [
+          ...state.items,
+          {
+            text: action.name,
+            group: action.group,
+            id: action.id,
+          },
+        ],
+      })
     case TOGGLE_ITEM:
       return Object.assign({}, state, {
         items: state.items.map((item, index) => {

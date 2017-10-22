@@ -37,7 +37,7 @@ const mapStateToProps = state => {
 Items.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired || PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,

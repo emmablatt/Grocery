@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { View, TextInput, Button, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { addManualItem, fetchData, navigate } from '../actions'
+import {
+  addManualItem,
+  fetchData,
+  navigate,
+  goBack,
+  addItemFromSearch,
+} from '../actions'
 import PropTypes from 'prop-types'
 import style from '../style'
 import Item from './Item'
@@ -46,6 +52,10 @@ class AddItem extends Component {
                     key={item.ndbno}
                     text={item.name}
                     category={item.group}
+                    onPress={() => {
+                      this.props.addItemFromSearch(item)
+                      this.props.goBack()
+                    }}
                   />
                 )
               })
@@ -74,6 +84,8 @@ function mapDispatchToProps(dispatch) {
   return {
     addManualItem: text => dispatch(addManualItem(text)),
     fetchData: query => dispatch(fetchData(query)),
+    addItemFromSearch: item => dispatch(addItemFromSearch(item)),
+    goBack: () => dispatch(goBack()),
   }
 }
 
