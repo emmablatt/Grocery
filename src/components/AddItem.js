@@ -24,7 +24,6 @@ class AddItem extends Component {
       <View>
         <TextInput
           autoFocus={true}
-          keyboardType="default"
           style={{ borderWidth: 1, borderColor: 'black', margin: 10 }}
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
@@ -33,34 +32,17 @@ class AddItem extends Component {
             this.setState({ text: '' })
           }}
         />
+
         <Button
           title="Search"
           onPress={() => {
             if (this.state.text === '') {
               return
             }
-            this.props.fetchData(this.state.text)
             this.setState({ text: '' })
+            this.props.navigate('Search', { text: this.state.text })
           }}
         />
-        <ScrollView style={{ backgroundColor: 'white' }}>
-          {this.props.isFetching && <Text>Fetching...</Text>}
-          {this.props.dataFetched
-            ? this.props.data.list.item.map(item => {
-                return (
-                  <Item
-                    key={item.ndbno}
-                    text={item.name}
-                    category={item.group}
-                    onPress={() => {
-                      this.props.addItemFromSearch(item)
-                      this.props.goBack()
-                    }}
-                  />
-                )
-              })
-            : null}
-        </ScrollView>
       </View>
     )
   }
@@ -86,6 +68,7 @@ function mapDispatchToProps(dispatch) {
     fetchData: query => dispatch(fetchData(query)),
     addItemFromSearch: item => dispatch(addItemFromSearch(item)),
     goBack: () => dispatch(goBack()),
+    navigate: (routeName, params) => dispatch(navigate(routeName, params)),
   }
 }
 

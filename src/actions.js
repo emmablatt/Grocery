@@ -65,8 +65,11 @@ export function fetchData(query) {
   }
 }
 
-export function navigate(routeName) {
-  return NavigationActions.navigate({ routeName })
+export function navigate(routeName, params) {
+  return NavigationActions.navigate({
+    routeName,
+    params,
+  })
 }
 
 export function goBack() {
