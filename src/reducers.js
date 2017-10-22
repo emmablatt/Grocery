@@ -13,6 +13,7 @@ import { NavigationActions } from 'react-navigation'
 export const itemReducer = (
   state = {
     items: [],
+    activeIds: [],
   },
   action,
 ) => {
@@ -27,6 +28,7 @@ export const itemReducer = (
             id: `${action.text}-${action.id}`,
           },
         ],
+        activeIds: [...state.activeIds, `${action.text}-${action.id}`],
       })
     case ADD_ITEM_FROM_SEARCH:
       return Object.assign({}, state, {
@@ -39,11 +41,12 @@ export const itemReducer = (
             completed: false,
           },
         ],
+        activeIds: [...state.activeIds, action.id],
       })
     case TOGGLE_ITEM:
       return Object.assign({}, state, {
         items: state.items.map((item, index) => {
-          if (index === action.index) {
+          if (index === action.id) {
             return Object.assign({}, item, {
               completed: !item.completed,
             })

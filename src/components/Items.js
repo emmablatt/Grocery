@@ -13,7 +13,7 @@ const Items = props => {
           key={item.id}
           text={item.text}
           completed={item.completed}
-          onPress={() => props.onItemPress(item.id)}
+          onPress={() => props.toggleItem(item.id)}
         />
       ))}
     </View>
@@ -22,7 +22,7 @@ const Items = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onItemPress: id => {
+    toggleItem: id => {
       dispatch(toggleItem(id))
     },
   }
