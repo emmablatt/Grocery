@@ -24,7 +24,7 @@ export const itemReducer = (
           {
             text: action.text,
             completed: false,
-            id: action.id,
+            id: `${action.text}-${action.id}`,
           },
         ],
       })
