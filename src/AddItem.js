@@ -17,6 +17,8 @@ class AddItem extends Component {
     return (
       <View>
         <TextInput
+          autoFocus={true}
+          keyboardType="default"
           style={{ borderWidth: 1, borderColor: 'black', margin: 10 }}
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
@@ -26,7 +28,7 @@ class AddItem extends Component {
           }}
         />
         <Button
-          title="Fetch some data"
+          title="Search"
           onPress={() => {
             if (this.state.text === '') {
               return
@@ -34,10 +36,6 @@ class AddItem extends Component {
             this.props.fetchData(this.state.text)
             this.setState({ text: '' })
           }}
-        />
-        <Button
-          title="Navigate"
-          onPress={() => this.props.navigate('Search')}
         />
         <ScrollView style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Fetching...</Text>}
@@ -72,7 +70,6 @@ function mapDispatchToProps(dispatch) {
   return {
     addItem: text => dispatch(addItem(text)),
     fetchData: query => dispatch(fetchData(query)),
-    navigate: routeName => dispatch(navigate(routeName)),
   }
 }
 

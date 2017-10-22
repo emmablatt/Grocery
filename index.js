@@ -21,7 +21,7 @@ let store = createStore(
   applyMiddleware(thunkMiddleware, loggerMiddleware),
 )
 
-class GroceryApp extends Component {
+class grocery extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -31,4 +31,4 @@ class GroceryApp extends Component {
   }
 }
 
-AppRegistry.registerComponent('GroceryApp', () => GroceryApp)
+AppRegistry.registerComponent('grocery', () => grocery)
