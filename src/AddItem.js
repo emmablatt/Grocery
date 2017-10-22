@@ -38,7 +38,7 @@ class AddItem extends Component {
         />
         <Button
           title="Navigate"
-          onPress={() => this.props.navigation.dispatch({ type: 'Search ' })}
+          onPress={() => this.props.navigation.navigate('Search')}
         />
         <ScrollView style={{ backgroundColor: 'white' }}>
           {this.props.isFetching && <Text>Fetching...</Text>}
@@ -66,6 +66,7 @@ function mapStateToProps(state) {
     error: state.dataReducer.error,
     dataFetched: state.dataReducer.dataFetched,
     items: state.dataReducer.items,
+    navigation: state.navReducer,
   }
 }
 

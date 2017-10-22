@@ -75,8 +75,12 @@ export const dataReducer = (
   }
 }
 
+const firstAction = AppNavigator.router.getActionForPathAndParams('Grocery')
+const tempNavState = AppNavigator.router.getStateForAction(firstAction)
+const secondAction = AppNavigator.router.getActionForPathAndParams('Search')
 const initialNavState = AppNavigator.router.getStateForAction(
-  AppNavigator.router.getActionForPathAndParams('Grocery'),
+  secondAction,
+  tempNavState,
 )
 
 export const navReducer = (state = initialNavState, action) => {
@@ -85,6 +89,7 @@ export const navReducer = (state = initialNavState, action) => {
     case 'Search':
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.navigate({ routeName: 'Search' }),
+        state,
       )
       break
     default:

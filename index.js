@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import 'whatwg-fetch'
 import AppWithNavigationState from './src/AppNavigator'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import devToolsEnhancer from 'remote-redux-devtools'
 
 const rootReducer = combineReducers({
   itemReducer,
@@ -16,17 +16,17 @@ const rootReducer = combineReducers({
 })
 
 const loggerMiddleware = createLogger()
-
 let store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunkMiddleware, loggerMiddleware)),
+  devToolsEnhancer(applyMiddleware(thunkMiddleware, loggerMiddleware)),
+  //TODO: take out devToolsEnhancer cuz it fucks with the API calls
 )
 
 class GroceryApp extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigationState store={store} />
+        <AppWithNavigationState />
       </Provider>
     )
   }

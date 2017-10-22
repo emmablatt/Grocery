@@ -5,6 +5,7 @@ export const FETCHING_DATA = 'FETCHING_DATA'
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS'
 export const FETCHING_ERROR = 'FETCHING_ERROR'
 import fetchingData from './Api'
+import { NavigationActions } from 'react-navigation'
 
 // action creators
 nextId = 0
@@ -36,4 +37,8 @@ export function fetchData(query) {
       .then(data => dispatch(getDataSuccess(data)))
       .catch(() => dispatch(getDataError()))
   }
+}
+
+export function navigate(routeName) {
+  return NavigationActions.navigate({ routeName })
 }
