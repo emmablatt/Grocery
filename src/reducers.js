@@ -67,6 +67,7 @@ export const dataReducer = (
   switch (action.type) {
     case FETCHING_DATA:
       return Object.assign({}, state, {
+        data: [],
         isFetching: true,
         dataFetched: false,
       })

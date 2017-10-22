@@ -32,23 +32,35 @@ class AddItem extends Component {
             this.setState({ text: '' })
           }}
         />
-
-        <Button
-          title="Search"
-          onPress={() => {
-            if (this.state.text === '') {
-              return
-            }
-            this.setState({ text: '' })
-            this.props.navigate('Search', { text: this.state.text })
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
           }}
-        />
+        >
+          <Button
+            title="Add"
+            onPress={() => {
+              if (this.state.text === '') {
+                return
+              }
+              this.props.addManualItem(this.state.text)
+              this.setState({ text: '' })
+            }}
+          />
+          <Button
+            title="Search"
+            onPress={() => {
+              if (this.state.text === '') {
+                return
+              }
+              this.setState({ text: '' })
+              this.props.navigate('Search', { text: this.state.text })
+            }}
+          />
+        </View>
       </View>
     )
-  }
-
-  _onItemPress = () => {
-    return
   }
 }
 
