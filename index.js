@@ -18,8 +18,7 @@ const rootReducer = combineReducers({
 const loggerMiddleware = createLogger()
 let store = createStore(
   rootReducer,
-  devToolsEnhancer(applyMiddleware(thunkMiddleware, loggerMiddleware)),
-  //TODO: take out devToolsEnhancer cuz it fucks with the API calls
+  applyMiddleware(thunkMiddleware, loggerMiddleware),
 )
 
 class GroceryApp extends Component {

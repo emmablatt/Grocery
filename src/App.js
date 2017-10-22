@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Button } from 'react-native'
 import ItemsContainer from './ItemsContainer'
 import AddItem from './AddItem'
 import Search from './Search'
+import { connect } from 'react-redux'
+import { navigate } from './actions'
 
 export class Grocery extends Component {
   static navigationOptions = {
@@ -11,22 +13,20 @@ export class Grocery extends Component {
   render() {
     return (
       <View>
-        <AddItem />
+        <Button
+          title="Add item"
+          onPress={() => this.props.navigate('Search')}
+        />
         <ItemsContainer />
       </View>
     )
   }
 }
 
-export class Pantry extends Component {
-  static navigationOptions = {
-    title: 'Pantry',
-  }
-  render() {
-    return (
-      <View>
-        <Text>Pantry af</Text>
-      </View>
-    )
+function mapDispatchToProps(dispatch) {
+  return {
+    navigate: routeName => dispatch(navigate(routeName)),
   }
 }
+
+export default connect(null, mapDispatchToProps)(Grocery)

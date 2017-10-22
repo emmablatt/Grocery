@@ -6,16 +6,17 @@ import {
   StackNavigator,
   TabNavigator,
 } from 'react-navigation'
-import { Grocery, Pantry } from './App'
+import Grocery from './App'
+import Pantry from './Pantry'
 import Search from './Search'
 
-// const TabNavConfig = TabNavigator({
-//   Grocery: { screen: Grocery },
-//   Pantry: { screen: Pantry },
-// })
+const TabNavConfig = TabNavigator({
+  Grocery: { screen: Grocery },
+  Pantry: { screen: Pantry },
+})
 
 export const AppNavigator = StackNavigator({
-  Grocery: { screen: Grocery },
+  Home: { screen: TabNavConfig },
   Search: { screen: Search },
 })
 

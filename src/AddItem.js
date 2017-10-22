@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { View, TextInput, Button, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { addItem, fetchData } from './actions'
+import { addItem, fetchData, navigate } from './actions'
 import PropTypes from 'prop-types'
 import style from './style'
 import Item from './Item'
 import Search from './Search'
-import { navigate } from './actions'
 
 class AddItem extends Component {
   constructor(props) {
     super(props)
     this.state = { text: '' }
-    console.log('AddItem props', this.props)
   }
 
   render() {
